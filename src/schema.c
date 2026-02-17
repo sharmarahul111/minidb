@@ -5,7 +5,6 @@ typedef enum {
 } DataType;
 
 typedef union {
-  DataType type;
   int i;
   float f;
   char *c;
@@ -13,14 +12,17 @@ typedef union {
 
 typedef struct {
   int size;
+  DataType type;
   Data data;
 } Field;
 
 typedef struct {
+  int field_count;
   Field *field;
 } Row;
 
 typedef struct {
+  int name_size;
   char *name;
   DataType type;
 } Column;
