@@ -1,11 +1,14 @@
 CC = gcc
 CFLAGS = -Wall -g
 all: minidb
-minidb: main.o schema.o
+minidb: main.o schema.o input.o
 	$(CC) $(CFLAGS) $^ -o minidb
 main.o: src/main.c
 	$(CC) $(CFLAGS) -c $< -o $@
 schema.o: src/schema.c
 	$(CC) $(CFLAGS) -c $< -o $@
+input.o: src/input.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
 clean:
 	rm -r *.o minidb
