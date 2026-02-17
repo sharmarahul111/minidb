@@ -1,11 +1,14 @@
 CC = gcc
 CFLAGS = -Wall -g
 all: minidb
-minidb: main.o input.o
+minidb: main.o input.o output.o
 	$(CC) $(CFLAGS) $^ -o minidb
 main.o: src/main.c
 	$(CC) $(CFLAGS) -c $< -o $@
 input.o: src/input.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+output.o: src/output.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
