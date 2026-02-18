@@ -1,18 +1,19 @@
-CC = gcc
-CFLAGS = -Wall -g
-all: minidb
-minidb: main.o input.o output.o dummy_table.o
+CC := gcc
+CFLAGS := -Wall -g
+OBJS := build/main.o build/input.o build/output.o build/dummy_table.o
+all: build/minidb
+build/minidb: $(OBJS)
 	@echo "Building binary..."
-	@$(CC) $(CFLAGS) $^ -o minidb
-main.o: src/main.c
+	@$(CC) $(CFLAGS) $^ -o $@
+build/main.o: src/main.c
 	$(CC) $(CFLAGS) -c $< -o $@
-input.o: src/input.c
+build/input.o: src/input.c
 	$(CC) $(CFLAGS) -c $< -o $@
-output.o: src/output.c
+build/output.o: src/output.c
 	$(CC) $(CFLAGS) -c $< -o $@
-dummy_table.o: src/dummy_table.c
+build/dummy_table.o: src/dummy_table.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 
 clean:
-	rm -r *.o minidb
+	rm -r build/*.o build/minidb
