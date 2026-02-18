@@ -3,9 +3,10 @@ Very Basic Database Management System in C
 
 ## TODO:
 ### Input
-- add some more dummy data
 - work on making menus
 - take input dynamically
+### Processing
+- Design an internal API to handle data alteration
 ### Output
 - dynamic output padding
 
