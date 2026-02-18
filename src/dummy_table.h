@@ -1,0 +1,2 @@
+
+Table* dummy_table();
