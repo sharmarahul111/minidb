@@ -7,7 +7,7 @@
 int main(){
   // welcomeMessage();
   Table *table = dummy_table();
-  printTable(*table);
+  printTable(table);
 
   return 0;
 }

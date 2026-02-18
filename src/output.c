@@ -1,28 +1,28 @@
 #include<stdio.h>
 #include "schema.h"
 #include "output.h"
-void printTable(Table table){
+void printTable(Table *table){
   int i,j;
-  int c = table.column_size;
+  int c = table->column_size;
   print_(12, c);
   printf("|");
   for (i=0;i<c;i++) {
-    printf(" %-*s |",9, table.column[i].name);
+    printf(" %-*s |",9, table->column[i].name);
   }
   printf("\n");
   print_(12, c);
-  for (i=0;i<table.row_size;i++) {
+  for (i=0;i<table->row_size;i++) {
     printf("|");
     for (j=0;j<c;j++) {
-      switch(table.column[j].type){
+      switch(table->column[j].type){
         case INT:
-          printf(" %*d |", 9, table.row[i].field[j].data.i);
+          printf(" %*d |", 9, table->row[i].field[j].data.i);
           break;
         case FLOAT:
-          printf(" %*.2f |", 9, table.row[i].field[j].data.f);
+          printf(" %*.2f |", 9, table->row[i].field[j].data.f);
           break;
         case STRING:
-          printf(" %-*s |", 9, table.row[i].field[j].data.c);
+          printf(" %-*s |", 9, table->row[i].field[j].data.c);
           break;
 
 
