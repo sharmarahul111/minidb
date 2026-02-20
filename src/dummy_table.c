@@ -13,8 +13,7 @@ Table* dummy_table(void){
   Field *fp;
   tp = (Table *) malloc(table_count * sizeof(Table));
   cp = (Column *) malloc(column_count * sizeof(Column));
-  rp = (Row *) malloc(row_count * sizeof(Row));
-  rpp = (Row **) malloc(row_count *sizeof(Row *));
+  rpp = (Row **) malloc(row_count * sizeof(Row *));
   fp = (Field *) malloc(field_count * row_count * sizeof(Field));
 
   cp[0] = (Column) {2, "ID", INT};
@@ -30,8 +29,9 @@ Table* dummy_table(void){
     fp[i*field_count+1] = (Field) {1, FLOAT, (Data) {.f = points[i]}};
     fp[i*field_count+2] = (Field) {10, STRING, (Data) {.c = names[i]}};
 
-    rp[i] = (Row) {field_count, fp+i*field_count};
-    rpp[i] = &rp[i];
+    rp = (Row *) malloc(sizeof(Row));
+    *rp = (Row) {field_count, fp+i*field_count};
+    rpp[i] = rp;
   }
   tp[0] = (Table) {column_count, row_count, cp, rpp};
   return tp;
