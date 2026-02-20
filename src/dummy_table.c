@@ -9,10 +9,12 @@ Table* dummy_table(){
   Table *tp;
   Column *cp;
   Row *rp;
+  Row **rpp;
   Field *fp;
   tp = (Table *) malloc(table_count * sizeof(Table));
   cp = (Column *) malloc(column_count * sizeof(Column));
   rp = (Row *) malloc(row_count * sizeof(Row));
+  rpp = (Row **) malloc(row_count *sizeof(Row *));
   fp = (Field *) malloc(field_count * row_count * sizeof(Field));
 
   cp[0] = (Column) {2, "ID", INT};
@@ -29,9 +31,9 @@ Table* dummy_table(){
     fp[i*field_count+2] = (Field) {10, STRING, (Data) {.c = names[i]}};
 
     rp[i] = (Row) {field_count, fp+i*field_count};
+    rpp[i] = &rp[i];
   }
-
-  tp[0] = (Table) {column_count, row_count, cp, rp};
+  tp[0] = (Table) {column_count, row_count, cp, rpp};
   return tp;
 }
 

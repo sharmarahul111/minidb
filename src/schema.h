@@ -31,7 +31,7 @@ typedef struct {
   int column_size;
   int row_size;
   Column *column;
-  Row *row;
+  Row **row;
 } Table;
 
 typedef struct {
