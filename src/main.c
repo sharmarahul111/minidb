@@ -21,6 +21,8 @@ int main(void){
   }};
   table_insert(table, rp);
   printTable(table);
+  table_delete(table, &table->row[1]);
+  printTable(table);
 
 
   return 0;
