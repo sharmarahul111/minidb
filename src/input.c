@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "input.h"
 char *main_menu[] = {
   "Show databases",

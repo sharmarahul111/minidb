@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "schema.h"
 #include "output.h"
-void printTable(Table *table){
+void print_table(Table *table){
   int i,j;
   int c = table->column_size;
   print_(12, c);

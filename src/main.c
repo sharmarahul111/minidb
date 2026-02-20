@@ -10,7 +10,7 @@ int main(void){
   // welcomeMessage();
   Row *rp;
   Table *table = dummy_table();
-  printTable(table);
+  print_table(table);
 
   rp = (Row *) malloc(sizeof(Row));
   *rp = (Row) {(Field []){
@@ -21,13 +21,13 @@ int main(void){
   }};
   table_insert(table, rp);
   printf("\nAfter Insert:\n");
-  printTable(table);
+  print_table(table);
   table_delete(table, &table->row[1]);
   printf("\nAfter Delete:\n");
-  printTable(table);
+  print_table(table);
   printf("\nAfter Update:\n");
   table_update(table, &table->row[0], table->row[1]);
-  printTable(table);
+  print_table(table);
 
 
   return 0;

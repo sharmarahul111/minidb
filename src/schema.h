@@ -17,7 +17,6 @@ typedef struct {
 } Field;
 
 typedef struct {
-  // int field_count;
   Field *field;
 } Row;
 
@@ -31,6 +30,7 @@ typedef struct {
   int column_size;
   int row_size;
   Column *column;
+  // TODO: Use capacity to avoid unnecessary reallocs
   Row **row;
 } Table;
 

@@ -2,7 +2,9 @@
 Very Basic Database Management System in C
 
 ## TODO:
-### ADD COMMENTS TO CODE
+### Next up
+- user input
+- `table_select()`
 ### Input
 - work on making menus
 - take input dynamically
@@ -11,3 +13,5 @@ Very Basic Database Management System in C
 ### Output
 - dynamic output padding
 
+### Future issues
+- Fields may have undefined values
