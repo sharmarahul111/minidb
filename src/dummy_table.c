@@ -1,4 +1,4 @@
-#include<stdlib.h>
+#include <stdlib.h>
 #include "schema.h"
 #include "dummy_table.h"
 Table* dummy_table(void){

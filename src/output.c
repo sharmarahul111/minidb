@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include <stdio.h>
 #include "schema.h"
 #include "output.h"
 void printTable(Table *table){
