@@ -20,8 +20,13 @@ int main(void){
 
   }};
   table_insert(table, rp);
+  printf("\nAfter Insert:\n");
   printTable(table);
   table_delete(table, &table->row[1]);
+  printf("\nAfter Delete:\n");
+  printTable(table);
+  printf("\nAfter Update:\n");
+  table_update(table, &table->row[0], table->row[1]);
   printTable(table);
 
 

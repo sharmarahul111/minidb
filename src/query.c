@@ -16,3 +16,9 @@ void table_delete(Table *table, Row **rowp){
   *rowp = table->row[table->row_size];
   table->row = (Row **) realloc(table->row, table->row_size * sizeof(Row *));
 }
+
+void table_update(Table *table, Row **rowp, Row *new_row){
+  (void) table;
+  free(*rowp);
+  *rowp = new_row;
+}
