@@ -13,13 +13,13 @@ void showMenu(char *menu[], int count){
     printf("%d. %s\n", i+1, menu[i]);
   }
 }
-int inputChoice(){
+int inputChoice(void){
   int choice;
   printf("\n%s", prompt);
   scanf("%d", &choice);
   return choice;
 }
-void welcomeMessage(){
+void welcomeMessage(void){
   printf("Hello user!\n");
   showMenu(main_menu, 4);
 

@@ -1,2 +1,2 @@
 
-Table* dummy_table();
+Table* dummy_table(void);

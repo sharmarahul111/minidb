@@ -1,7 +1,7 @@
 #include<stdlib.h>
 #include "schema.h"
 #include "dummy_table.h"
-Table* dummy_table(){
+Table* dummy_table(void){
   int table_count = 1;
   int column_count = 3;
   int row_count = 4;

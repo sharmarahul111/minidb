@@ -4,7 +4,7 @@
 #include "output.h"
 #include "dummy_table.h"
 
-int main(){
+int main(void){
   // welcomeMessage();
   Table *table = dummy_table();
   printTable(table);
