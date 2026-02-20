@@ -30,7 +30,7 @@ Table* dummy_table(void){
     fp[i*field_count+2] = (Field) {10, STRING, (Data) {.c = names[i]}};
 
     rp = (Row *) malloc(sizeof(Row));
-    *rp = (Row) {field_count, fp+i*field_count};
+    *rp = (Row) {fp+i*field_count};
     rpp[i] = rp;
   }
   tp[0] = (Table) {column_count, row_count, cp, rpp};

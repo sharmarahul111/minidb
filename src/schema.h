@@ -17,7 +17,7 @@ typedef struct {
 } Field;
 
 typedef struct {
-  int field_count;
+  // int field_count;
   Field *field;
 } Row;
 

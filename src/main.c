@@ -13,7 +13,7 @@ int main(void){
   printTable(table);
 
   rp = (Row *) malloc(sizeof(Row));
-  *rp = (Row) {3, (Field []){
+  *rp = (Row) {(Field []){
     (Field) {1, INT, (Data) {.i = 999}},
     (Field) {1, FLOAT, (Data) {.f = 444.44}},
     (Field) {10, STRING, (Data) {.c = "New User"}}
