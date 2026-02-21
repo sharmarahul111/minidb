@@ -101,6 +101,9 @@ void input_table_delete(Table *table){
   for(int i=0;i<table->row_size;i++){
     if (table->row[i]->field[0].data.i == id) {
       table_delete(table, table->row);
+      // The last row gets inserted to this index
+      // so i-- incase last one is also a match
+      i--;
     }
   }
 }
