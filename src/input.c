@@ -38,6 +38,7 @@ void select_menu(int mode){
       show_menu(main_menu, 4);
     case TABLE_MENU:
       show_menu(table_menu, 5);
+      break;
     default:
       exit(1);
   }
@@ -48,6 +49,28 @@ void welcome_message(void){
   show_menu(main_menu, 4);
 }
 
+void mode_main_menu(Table *table, int choice){
+  (void) table;
+  enum {
+    SHOW_DATABASES = 1,
+    SHOW_TABLES,
+    SELECT_DATABASE,
+    SELECT_TABLE,
+  };
+  switch (choice) {
+    case SHOW_DATABASES:
+      break;
+    case SHOW_TABLES:
+      break;
+    case SELECT_DATABASE:
+      break;
+    case SELECT_TABLE:
+      // add a table selection function here
+      MODE = TABLE_MENU;
+      break;
+  }
+
+}
 void mode_table_menu(Table *table, int choice){
   enum {
     SELECT=1,
@@ -70,17 +93,16 @@ void mode_table_menu(Table *table, int choice){
       input_table_delete(table);
       break;
     case GOTO_MAIN_MENU:
+      // Add table exiting selection functiom
       MODE = MAIN_MENU;
+      break;
     default:
       exit(0);
 
   }
 
 }
-void mode_main_menu(Table *table, int choice){
-  (void) table;
-  (void) choice;
-}
+
 void input_table_update(Table *table){
   int id;
   printf("Enter %s:", table->column[0].name);

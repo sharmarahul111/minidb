@@ -20,6 +20,7 @@ int main(void){
     switch(MODE){
       case MAIN_MENU:
         mode_main_menu(table, choice);
+        break;
       case TABLE_MENU:
         mode_table_menu(table, choice);
         break;
