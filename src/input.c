@@ -14,7 +14,7 @@ char *table_menu[] = {
   "Show table",
   "Insert new row",
   "Update a row",
-  "Delete a row"
+  "Delete a row",
 };
 char prompt[] = "> ";
 void show_menu(char *menu[], int count){
@@ -33,7 +33,7 @@ int input_choice(void){
 void welcome_message(void){
   printf("Hello user!\n");
   // show_menu(main_menu, 4);
-  show_menu(table_menu, 3);
+  show_menu(table_menu, 4);
 
 }
 
@@ -54,6 +54,7 @@ void mode_table_menu(Table *table, int choice){
     case UPDATE:
       break;
     case DELETE:
+      input_table_delete(table);
       break;
     default:
       exit(0);
@@ -65,7 +66,16 @@ void mode_main_menu(Table *table, int choice){
   (void) table;
   (void) choice;
 }
-
+void input_table_delete(Table *table){
+  int id;
+  printf("Enter %s:", table->column[0].name);
+  scanf("%d", &id);
+  for(int i=0;i<table->row_size;i++){
+    if (table->row[i]->field[0].data.i == id) {
+      table_delete(table, table->row);
+    }
+  }
+}
 void input_table_insert(Table *table){
   int i;
   Row *rp = (Row *) malloc(sizeof(Row));
@@ -85,7 +95,7 @@ void input_table_insert(Table *table){
         break;
     }
     *rp = (Row) {fp};
-    printf("\n");
+    // printf("\n");
 
   }
   table_insert(table, rp);
