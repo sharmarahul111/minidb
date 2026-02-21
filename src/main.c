@@ -5,7 +5,7 @@
 #include "output.h"
 #include "dummy_table.h"
 #include "query.h"
-
+extern char* table_menu[];
 int main(void){
   int choice;
   INPUT_MODE mode = TABLE_MENU;
@@ -27,7 +27,8 @@ int main(void){
         exit(1);
     }
 
-    welcome_message();
+    // welcome_message();
+    show_menu(table_menu, 4);
   }
   /*
   print_table(table);
