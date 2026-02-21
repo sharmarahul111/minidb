@@ -52,6 +52,7 @@ void mode_table_menu(Table *table, int choice){
       input_table_insert(table);
       break;
     case UPDATE:
+      input_table_update(table);
       break;
     case DELETE:
       input_table_delete(table);
@@ -65,6 +66,33 @@ void mode_table_menu(Table *table, int choice){
 void mode_main_menu(Table *table, int choice){
   (void) table;
   (void) choice;
+}
+void input_table_update(Table *table){
+  int id;
+  printf("Enter %s:", table->column[0].name);
+  scanf("%d", &id);
+  for(int i=0;i<table->row_size;i++){
+    if (table->row[i]->field[0].data.i == id) {
+      for (int j=0;j<table->column_size;j++) {
+        printf("%s: ", table->column[j].name);
+        switch(table->column[j].type){
+          case INT:
+            printf("%d -> ", table->row[i]->field[j].data.i);
+            scanf("%d", &table->row[i]->field[j].data.i);
+            break;
+          case FLOAT:
+            printf("%.2f -> ", table->row[i]->field[j].data.f);
+            scanf("%f", &table->row[i]->field[j].data.f);
+            break;
+          case STRING:
+            printf("'%s' -> ", table->row[i]->field[j].data.c);
+            scanf("%s", table->row[i]->field[j].data.c);
+            break;
+        }
+      }
+    }
+  }
+
 }
 void input_table_delete(Table *table){
   int id;

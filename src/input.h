@@ -14,5 +14,6 @@ void mode_table_menu(Table *table, int choice);
 
 // Table CRUD operations
 void input_table_insert(Table *table);
+void input_table_update(Table *table);
 void input_table_delete(Table *table);
 #endif
