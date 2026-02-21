@@ -5,19 +5,19 @@
 #include "output.h"
 #include "dummy_table.h"
 #include "query.h"
-extern char* table_menu[];
+INPUT_MODE MODE = MAIN_MENU;
 int main(void){
   int choice;
-  INPUT_MODE mode = TABLE_MENU;
-  welcome_message();
   Table *table = dummy_table();
+  Database db = {1, table};
+  welcome_message();
   while(1){
     choice = input_choice();
     if (choice==0) {
       printf("Bye\n");
       exit(0);
     }
-    switch(mode){
+    switch(MODE){
       case MAIN_MENU:
         mode_main_menu(table, choice);
       case TABLE_MENU:
@@ -28,7 +28,7 @@ int main(void){
     }
 
     // welcome_message();
-    show_menu(table_menu, 4);
+    select_menu(MODE);
   }
   /*
   print_table(table);

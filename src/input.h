@@ -8,6 +8,7 @@ typedef enum {
 int input_choice(void);
 void welcome_message(void);
 void show_menu(char *menu[], int count);
+void select_menu(int mode);
 // MODE operations
 void mode_main_menu(Table *table, int choice);
 void mode_table_menu(Table *table, int choice);

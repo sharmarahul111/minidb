@@ -15,7 +15,9 @@ char *table_menu[] = {
   "Insert new row",
   "Update a row",
   "Delete a row",
+  "Main menu"
 };
+extern INPUT_MODE MODE;
 char prompt[] = "> ";
 void show_menu(char *menu[], int count){
   int i;
@@ -30,11 +32,20 @@ int input_choice(void){
   scanf("%d", &choice);
   return choice;
 }
+void select_menu(int mode){
+  switch (mode) {
+    case MAIN_MENU:
+      show_menu(main_menu, 4);
+    case TABLE_MENU:
+      show_menu(table_menu, 5);
+    default:
+      exit(1);
+  }
+
+}
 void welcome_message(void){
   printf("Hello user!\n");
-  // show_menu(main_menu, 4);
-  show_menu(table_menu, 4);
-
+  show_menu(main_menu, 4);
 }
 
 void mode_table_menu(Table *table, int choice){
@@ -42,7 +53,8 @@ void mode_table_menu(Table *table, int choice){
     SELECT=1,
     INSERT,
     UPDATE,
-    DELETE
+    DELETE,
+    GOTO_MAIN_MENU
   };
   switch (choice) {
     case SELECT:
@@ -57,6 +69,8 @@ void mode_table_menu(Table *table, int choice){
     case DELETE:
       input_table_delete(table);
       break;
+    case GOTO_MAIN_MENU:
+      MODE = MAIN_MENU;
     default:
       exit(0);
 
