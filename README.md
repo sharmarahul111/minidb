@@ -3,9 +3,16 @@ Very Basic Database Management System in C
 
 ## TODO:
 ### Next up
-- user input
-- `table_select()`
-* rows affected type helper messages
+- update row
+- print table takes row** pointers
+- select filter
+- delete a table from memory
+- select specified rows from a table
+- * rows affected type helper messages
+- database
+  - select table
+  - create table
+  - table alteration queries
 ### Input
 - work on making menus
 - take input dynamically
