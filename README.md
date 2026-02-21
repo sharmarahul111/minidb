@@ -31,3 +31,7 @@ Very Basic Database Management System in C
 - ascii input for int selects show tables
 - string input cut off after space
 - better prompt
+
+### Reminders
+- don't forget break statements
+- don't forget to free
