@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "schema.h"
 #include "input.h"
+#include "output.h"
+#include "query.h"
 char *main_menu[] = {
   "Show databases",
   "Show tables",
@@ -8,9 +11,10 @@ char *main_menu[] = {
   "Select Table"
 };
 char *table_menu[] = {
+  "Show table",
   "Insert new row",
-  "Delete a row",
-  "Update a row"
+  "Update a row",
+  "Delete a row"
 };
 char prompt[] = "> ";
 void show_menu(char *menu[], int count){
@@ -33,26 +37,56 @@ void welcome_message(void){
 
 }
 
-void mode_table_menu(int choice){
+void mode_table_menu(Table *table, int choice){
   enum {
-    SELECT,
+    SELECT=1,
     INSERT,
     UPDATE,
     DELETE
   };
   switch (choice) {
     case SELECT:
+      print_table(table);
       break;
     case INSERT:
+      input_table_insert(table);
       break;
     case UPDATE:
       break;
     case DELETE:
       break;
-    
+    default:
+      exit(0);
+
   }
 
 }
-void mode_main_menu(int choice){
+void mode_main_menu(Table *table, int choice){
+  (void) table;
+  (void) choice;
+}
 
+void input_table_insert(Table *table){
+  int i;
+  Row *rp = (Row *) malloc(sizeof(Row));
+  Field *fp = (Field *) malloc(table->column_size*sizeof(Field));
+  for (i=0;i<table->column_size;i++) {
+    printf("%s : ", table->column[i].name);
+    switch(table->column[i].type){
+      case INT:
+        scanf("%d", &(fp[i].data.i));
+        break;
+      case FLOAT:
+        scanf("%f", &(fp[i].data.f));
+        break;
+      case STRING:
+        fp[i].data.c = (char *) malloc(20*sizeof(char));
+        scanf("%s", fp[i].data.c);
+        break;
+    }
+    *rp = (Row) {fp};
+    printf("\n");
+
+  }
+  table_insert(table, rp);
 }

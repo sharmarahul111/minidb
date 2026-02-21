@@ -19,11 +19,15 @@ int main(void){
     }
     switch(mode){
       case MAIN_MENU:
-        mode_main_menu(choice);
+        mode_main_menu(table, choice);
       case TABLE_MENU:
-        mode_table_menu(choice);
+        mode_table_menu(table, choice);
         break;
+      default:
+        exit(1);
     }
+
+    welcome_message();
   }
   /*
   print_table(table);
