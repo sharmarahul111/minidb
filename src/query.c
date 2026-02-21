@@ -18,6 +18,11 @@ void table_insert(Table *table, Row *row){
 void table_delete(Table *table, Row **rowp){
   // TODO: Check size
   (table->row_size)--;
+  for(int i=0;i<table->column_size;i++){
+    if (table->column[i].type == STRING) {
+      free((*rowp)->field[i].data.c);
+    }
+  }
   free(*rowp);
   *rowp = table->row[table->row_size];
   table->row = (Row **) realloc(table->row, table->row_size * sizeof(Row *));
