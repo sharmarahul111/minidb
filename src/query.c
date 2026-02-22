@@ -19,7 +19,7 @@ void table_delete(Table *table, Row **rowp){
   // TODO: Check size
   for(int i=0;i<table->column_size;i++){
     if (table->column[i].type == STRING) {
-      free((*rowp)->field[i].data.c);
+      free((*rowp)->field[i].data.s);
     }
   }
   free(*rowp);

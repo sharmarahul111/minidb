@@ -6,10 +6,10 @@ typedef enum {
 } DataType;
 
 typedef union {
-  int i;
-  float f;
-  char *c;
-  char char32[32];
+  int i32;
+  float f32;
+  char *s;
+  char c32[32];
 } Data;
 
 typedef struct {

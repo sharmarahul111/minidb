@@ -135,25 +135,25 @@ void input_table_update(Table *table){
   printf("Enter %s:", table->column[0].name);
   scanf("%d", &id);
   for(int i=0;i<table->row_size;i++){
-    if (table->row[i]->field[0].data.i == id) {
+    if (table->row[i]->field[0].data.i32 == id) {
       for (int j=0;j<table->column_size;j++) {
         printf("%s: ", table->column[j].name);
         switch(table->column[j].type){
           case INT:
-            printf("%d -> ", table->row[i]->field[j].data.i);
-            scanf("%d", &table->row[i]->field[j].data.i);
+            printf("%d -> ", table->row[i]->field[j].data.i32);
+            scanf("%d", &table->row[i]->field[j].data.i32);
             break;
           case FLOAT:
-            printf("%.2f -> ", table->row[i]->field[j].data.f);
-            scanf("%f", &table->row[i]->field[j].data.f);
+            printf("%.2f -> ", table->row[i]->field[j].data.f32);
+            scanf("%f", &table->row[i]->field[j].data.f32);
             break;
           case CHAR32:
-            printf("'%s' -> ", table->row[i]->field[j].data.char32);
-            scanf("%s", table->row[i]->field[j].data.char32);
+            printf("'%s' -> ", table->row[i]->field[j].data.c32);
+            scanf("%s", table->row[i]->field[j].data.c32);
             break;
           case STRING:
-            printf("'%s' -> ", table->row[i]->field[j].data.c);
-            scanf("%s", table->row[i]->field[j].data.c);
+            printf("'%s' -> ", table->row[i]->field[j].data.s);
+            scanf("%s", table->row[i]->field[j].data.s);
             break;
         }
       }
@@ -166,7 +166,7 @@ void input_table_delete(Table *table){
   printf("Enter %s:", table->column[0].name);
   scanf("%d", &id);
   for(int i=0;i<table->row_size;i++){
-    if (table->row[i]->field[0].data.i == id) {
+    if (table->row[i]->field[0].data.i32 == id) {
       table_delete(table, &table->row[i]);
       // The last row gets inserted to this index
       // so i-- incase last one is also a match
@@ -182,17 +182,17 @@ void input_table_insert(Table *table){
     printf("%s : ", table->column[i].name);
     switch(table->column[i].type){
       case INT:
-        scanf("%d", &(fp[i].data.i));
+        scanf("%d", &(fp[i].data.i32));
         break;
       case FLOAT:
-        scanf("%f", &(fp[i].data.f));
+        scanf("%f", &(fp[i].data.f32));
         break;
       case CHAR32:
-        scanf("%s", fp[i].data.char32);
+        scanf("%s", fp[i].data.c32);
         break;
       case STRING:
-        fp[i].data.c = (char *) malloc(20*sizeof(char));
-        scanf("%s", fp[i].data.c);
+        fp[i].data.s = (char *) malloc(20*sizeof(char));
+        scanf("%s", fp[i].data.s);
         break;
     }
     *rp = (Row) {fp};

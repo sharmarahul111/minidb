@@ -17,16 +17,16 @@ void print_table(Table *table){
     for (j=0;j<c;j++) {
       switch(table->column[j].type){
         case INT:
-          printf(" %*d |", 9, table->row[i]->field[j].data.i);
+          printf(" %*d |", 9, table->row[i]->field[j].data.i32);
           break;
         case FLOAT:
-          printf(" %*.2f |", 9, table->row[i]->field[j].data.f);
+          printf(" %*.2f |", 9, table->row[i]->field[j].data.f32);
           break;
         case CHAR32:
-          printf(" %-*s |", 9, table->row[i]->field[j].data.char32);
+          printf(" %-*s |", 9, table->row[i]->field[j].data.c32);
           break;
         case STRING:
-          printf(" %-*s |", 9, table->row[i]->field[j].data.c);
+          printf(" %-*s |", 9, table->row[i]->field[j].data.s);
           break;
 
 

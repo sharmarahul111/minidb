@@ -26,11 +26,11 @@ Table* dummy_table(void){
   float points[] = {34.65, 240.63, 473.34, 412.64};
   int i;
   for (i=0;i<row_count;i++) {
-    fp[i*field_count+0] = (Field) {1, INT, (Data) {.i = i+1}};
-    fp[i*field_count+1] = (Field) {1, FLOAT, (Data) {.f = points[i]}};
-    fp[i*field_count+2] = (Field) {32, CHAR32, (Data) {.c = NULL}};
+    fp[i*field_count+0] = (Field) {1, INT, (Data) {.i32 = i+1}};
+    fp[i*field_count+1] = (Field) {1, FLOAT, (Data) {.f32 = points[i]}};
+    fp[i*field_count+2] = (Field) {32, CHAR32, (Data) {.s = NULL}};
     fp[i*field_count+2].type = CHAR32;
-    strcpy(fp[i*field_count+2].data.char32, names[i]);
+    strcpy(fp[i*field_count+2].data.c32, names[i]);
 
     rp = (Row *) malloc(sizeof(Row));
     *rp = (Row) {fp+i*field_count};
