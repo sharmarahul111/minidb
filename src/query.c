@@ -17,15 +17,15 @@ void table_insert(Table *table, Row *row){
 // rocates pointer array
 void table_delete(Table *table, Row **rowp){
   // TODO: Check size
-  (table->row_size)--;
   for(int i=0;i<table->column_size;i++){
     if (table->column[i].type == STRING) {
       free((*rowp)->field[i].data.c);
     }
   }
   free(*rowp);
-  *rowp = table->row[table->row_size];
-  table->row = (Row **) realloc(table->row, table->row_size * sizeof(Row *));
+  *rowp = table->row[table->row_size-1];
+  table->row = (Row **) realloc(table->row, (table->row_size-1) * sizeof(Row *));
+  (table->row_size)--;
 }
 
 void table_update(Table *table, Row **rowp, Row *new_row){
