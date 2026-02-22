@@ -35,10 +35,12 @@ typedef struct {
   Column *column;
   // TODO: Use capacity to avoid unnecessary reallocs
   Row **row;
+  char name[32];
 } Table;
 
 typedef struct {
   int table_count;
   int table_index;
+  char name[32];
   Table *table;
 } Database;

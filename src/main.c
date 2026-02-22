@@ -9,7 +9,7 @@ INPUT_MODE MODE = MAIN_MENU;
 int main(void){
   int choice;
   Table *table = dummy_table();
-  Database db = {1, 0, table};
+  Database db = {1, 0,"My DB", table};
   welcome_message();
   while(1){
     choice = input_choice();

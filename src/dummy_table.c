@@ -36,7 +36,7 @@ Table* dummy_table(void){
     *rp = (Row) {fp+i*field_count};
     rpp[i] = rp;
   }
-  tp[0] = (Table) {column_count, row_count, cp, rpp};
+  tp[0] = (Table) {column_count, row_count, cp, rpp, "Table o1"};
   return tp;
 }
 

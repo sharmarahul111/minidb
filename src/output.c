@@ -4,6 +4,7 @@
 void print_table(Table *table){
   int i,j;
   int c = table->column_size;
+  printf("Table: %s\n", table->name);
   print_(12, c);
   printf("|");
   for (i=0;i<c;i++) {
