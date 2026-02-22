@@ -12,7 +12,6 @@ Table* dummy_table(void){
   Row *rp;
   Row **rpp;
   Field *fp;
-  // char *ch;
   tp = (Table *) malloc(table_count * sizeof(Table));
   cp = (Column *) malloc(column_count * sizeof(Column));
   rpp = (Row **) malloc(row_count * sizeof(Row *));
@@ -27,8 +26,6 @@ Table* dummy_table(void){
   float points[] = {34.65, 240.63, 473.34, 412.64};
   int i;
   for (i=0;i<row_count;i++) {
-    // ch = (char *) malloc(20*sizeof(char));
-    // strcpy(ch, names[i]);
     fp[i*field_count+0] = (Field) {1, INT, (Data) {.i = i+1}};
     fp[i*field_count+1] = (Field) {1, FLOAT, (Data) {.f = points[i]}};
     fp[i*field_count+2] = (Field) {32, CHAR32, (Data) {.c = NULL}};

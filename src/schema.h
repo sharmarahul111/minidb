@@ -14,6 +14,7 @@ typedef union {
 
 typedef struct {
   int size;
+  // currently not in use but maybe needed for NULL values
   DataType type;
   Data data;
 } Field;

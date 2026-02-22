@@ -31,26 +31,6 @@ int main(void){
     // welcome_message();
     select_menu(MODE);
   }
-  /*
-  print_table(table);
-  Row *rp;
-  rp = (Row *) malloc(sizeof(Row));
-  *rp = (Row) {(Field []){
-    (Field) {1, INT, (Data) {.i = 999}},
-    (Field) {1, FLOAT, (Data) {.f = 444.44}},
-    (Field) {10, STRING, (Data) {.c = "New User"}}
-
-  }};
-  table_insert(table, rp);
-  printf("\nAfter Insert:\n");
-  print_table(table);
-  table_delete(table, &table->row[1]);
-  printf("\nAfter Delete:\n");
-  print_table(table);
-  printf("\nAfter Update:\n");
-  table_update(table, &table->row[0], table->row[1]);
-  print_table(table);
-  */
 
   return 0;
 }
