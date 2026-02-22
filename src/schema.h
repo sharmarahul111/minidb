@@ -42,5 +42,5 @@ typedef struct {
   int table_count;
   int table_index;
   char name[32];
-  Table *table;
+  Table **tables;
 } Database;

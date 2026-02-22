@@ -116,7 +116,7 @@ void input_db_show_tables(Database *db){
 void input_db_select_table(Database *db){
   int table_choice;
   for (int i=0;i<db->table_count;i++) {
-    strcpy(custom_menu[i], db->table[i].name);
+    strcpy(custom_menu[i], db->tables[i]->name);
   }
   printf("Select table:\n");
   show_menu(custom_menu, db->table_count);

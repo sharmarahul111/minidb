@@ -39,14 +39,15 @@ void print_table(Table *table){
 }
 void print_tables(Database *db){
   int i;
-  int c = db->table_count;
+  int c = 1; // Only tables, no attribute column
   print_(12, 1);
-  printf("| %-*s |\n",9, db->name);
+  printf("| %-*s |",9, db->name);
+  printf("\n");
   print_(12, 1);
   for (i=0;i<db->table_count;i++) {
-      printf("| %-*s |", 9, db->table[i].name);
+    printf("| %-*s |", 9, db->tables[i]->name);
+    printf("\n");
   }
-  printf("\n");
   print_(12, c);
 }
 void print_(int cell_size,int column_size){

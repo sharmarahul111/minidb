@@ -8,8 +8,8 @@
 INPUT_MODE MODE = MAIN_MENU;
 int main(void){
   int choice;
-  Table *table = dummy_table();
-  Database db = {1, 0,"My DB", table};
+  Table *tables[] = {dummy_table(), dummy_table()};
+  Database db = {2, 0,"My DB", tables};
   welcome_message();
   while(1){
     choice = input_choice();
@@ -22,7 +22,7 @@ int main(void){
         mode_main_menu(&db, choice);
         break;
       case TABLE_MENU:
-        mode_table_menu(&db.table[db.table_index], choice);
+        mode_table_menu(db.tables[db.table_index], choice);
         break;
       default:
         exit(1);
