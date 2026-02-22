@@ -10,15 +10,9 @@ Very Basic in-memory Database Management System in C
 - select specified rows from a table
 - * rows affected type helper messages
 - database
-  - select table
+  - show_table prints the table attributes also
   - create table
   - table alteration queries
-### Input
-- work on making menus
-- take input dynamically
-### Processing
-- Design an internal API to handle data alteration
-### Output
 - dynamic output padding
 
 ### Future issues
