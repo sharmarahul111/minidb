@@ -25,7 +25,7 @@ typedef struct {
 
 typedef struct {
   int name_size;
-  char *name;
+  char name[32];
   DataType type;
 } Column;
 
