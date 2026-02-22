@@ -21,6 +21,9 @@ void print_table(Table *table){
         case FLOAT:
           printf(" %*.2f |", 9, table->row[i]->field[j].data.f);
           break;
+        case CHAR32:
+          printf(" %-*s |", 9, table->row[i]->field[j].data.char32);
+          break;
         case STRING:
           printf(" %-*s |", 9, table->row[i]->field[j].data.c);
           break;

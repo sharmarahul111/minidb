@@ -1,6 +1,7 @@
 typedef enum {
   INT,
   FLOAT,
+  CHAR32,
   STRING
 } DataType;
 
@@ -8,6 +9,7 @@ typedef union {
   int i;
   float f;
   char *c;
+  char char32[32];
 } Data;
 
 typedef struct {

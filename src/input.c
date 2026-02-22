@@ -120,6 +120,10 @@ void input_table_update(Table *table){
             printf("%.2f -> ", table->row[i]->field[j].data.f);
             scanf("%f", &table->row[i]->field[j].data.f);
             break;
+          case CHAR32:
+            printf("'%s' -> ", table->row[i]->field[j].data.char32);
+            scanf("%s", table->row[i]->field[j].data.char32);
+            break;
           case STRING:
             printf("'%s' -> ", table->row[i]->field[j].data.c);
             scanf("%s", table->row[i]->field[j].data.c);
@@ -155,6 +159,9 @@ void input_table_insert(Table *table){
         break;
       case FLOAT:
         scanf("%f", &(fp[i].data.f));
+        break;
+      case CHAR32:
+        scanf("%s", fp[i].data.char32);
         break;
       case STRING:
         fp[i].data.c = (char *) malloc(20*sizeof(char));
