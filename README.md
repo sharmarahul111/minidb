@@ -1,5 +1,5 @@
 # minidb
-Very Basic Database Management System in C
+Very Basic in-memory Database Management System in C
 
 ## TODO:
 ### Next up
