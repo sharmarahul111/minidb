@@ -9,7 +9,7 @@ INPUT_MODE MODE = MAIN_MENU;
 int main(void){
   int choice;
   Table *table = dummy_table();
-  Database db = {1, table};
+  Database db = {1, 0, table};
   welcome_message();
   while(1){
     choice = input_choice();
@@ -19,16 +19,15 @@ int main(void){
     }
     switch(MODE){
       case MAIN_MENU:
-        mode_main_menu(table, choice);
+        mode_main_menu(&db, choice);
         break;
       case TABLE_MENU:
-        mode_table_menu(table, choice);
+        mode_table_menu(&db.table[db.table_index], choice);
         break;
       default:
         exit(1);
     }
 
-    // welcome_message();
     select_menu(MODE);
   }
 

@@ -5,10 +5,11 @@
 #include "output.h"
 #include "query.h"
 char *main_menu[] = {
-  "Show databases",
-  "Show tables",
-  "Select database",
-  "Select Table"
+  "Show Tables",
+  "Select Table",
+  "Create Table",
+  "Delete Table",
+
 };
 char *table_menu[] = {
   "Show table",
@@ -36,6 +37,7 @@ void select_menu(int mode){
   switch (mode) {
     case MAIN_MENU:
       show_menu(main_menu, 4);
+      break;
     case TABLE_MENU:
       show_menu(table_menu, 5);
       break;
@@ -49,25 +51,26 @@ void welcome_message(void){
   show_menu(main_menu, 4);
 }
 
-void mode_main_menu(Table *table, int choice){
-  (void) table;
+void mode_main_menu(Database *db, int choice){
   enum {
-    SHOW_DATABASES = 1,
-    SHOW_TABLES,
-    SELECT_DATABASE,
+    SHOW_TABLES = 1,
     SELECT_TABLE,
+    CREATE_TABLE,
+    DELETE_TABLE
   };
   switch (choice) {
-    case SHOW_DATABASES:
-      break;
     case SHOW_TABLES:
-      break;
-    case SELECT_DATABASE:
       break;
     case SELECT_TABLE:
       // add a table selection function here
       MODE = TABLE_MENU;
       break;
+    case CREATE_TABLE:
+      break;
+    case DELETE_TABLE:
+      break;
+    default:
+      exit(0);
   }
 
 }

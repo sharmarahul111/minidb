@@ -39,5 +39,6 @@ typedef struct {
 
 typedef struct {
   int table_count;
+  int table_index;
   Table *table;
 } Database;
