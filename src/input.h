@@ -7,11 +7,14 @@ typedef enum {
 
 int input_choice(void);
 void welcome_message(void);
-void show_menu(char *menu[], int count);
+void show_menu(char menu[][32], int count);
 void select_menu(int mode);
 // MODE operations
 void mode_main_menu(Database *db, int choice);
 void mode_table_menu(Table *table, int choice);
+
+// Database CRUD operations (not the database itself)
+void input_db_select_table(Database *db);
 
 // Table CRUD operations
 void input_table_insert(Table *table);

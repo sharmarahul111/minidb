@@ -4,28 +4,31 @@
 #include "input.h"
 #include "output.h"
 #include "query.h"
-char *main_menu[] = {
+#define CUSTOM_MENU_SIZE 20
+#define STRING_SIZE 32
+char main_menu[][STRING_SIZE] = {
   "Show Tables",
   "Select Table",
   "Create Table",
   "Delete Table",
 
 };
-char *table_menu[] = {
+char table_menu[][STRING_SIZE] = {
   "Show table",
   "Insert new row",
   "Update a row",
   "Delete a row",
   "Main menu"
 };
+char custom_menu[CUSTOM_MENU_SIZE][32];
+
 extern INPUT_MODE MODE;
 char prompt[] = "> ";
-void show_menu(char *menu[], int count){
+void show_menu(char menu[][STRING_SIZE], int count){
   int i;
   for(i=0;i<count;i++){
     printf("%d) %s\n", i+1, menu[i]);
   }
-  printf("0) Exit\n");
 }
 int input_choice(void){
   int choice;
@@ -47,7 +50,8 @@ void select_menu(int mode){
 
 }
 void welcome_message(void){
-  printf("Hello user!\n");
+  printf("Hello user! ");
+  printf("Press 0 to exit anytime\n");
   show_menu(main_menu, 4);
 }
 
@@ -62,8 +66,7 @@ void mode_main_menu(Database *db, int choice){
     case SHOW_TABLES:
       break;
     case SELECT_TABLE:
-      // add a table selection function here
-      MODE = TABLE_MENU;
+      input_db_select_table(db);
       break;
     case CREATE_TABLE:
       break;
@@ -106,6 +109,23 @@ void mode_table_menu(Table *table, int choice){
 
 }
 
+void input_db_select_table(Database *db){
+  int table_choice;
+  for (int i=0;i<db->table_count;i++) {
+    strcpy(custom_menu[i], db->table[i].name);
+  }
+  printf("Select table:\n");
+  show_menu(custom_menu, db->table_count);
+  table_choice = input_choice();
+
+  // <= table_count cuz enum index starts with 1 here
+  if(table_choice >= 0 && table_choice <= db->table_count){
+    db->table_index = table_choice-1; // starts with 1
+    MODE = TABLE_MENU;
+  } else {
+    printf("Error: Table not selected\n");
+  }
+}
 void input_table_update(Table *table){
   int id;
   printf("Enter %s:", table->column[0].name);
