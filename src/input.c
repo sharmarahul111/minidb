@@ -64,6 +64,7 @@ void mode_main_menu(Database *db, int choice){
   };
   switch (choice) {
     case SHOW_TABLES:
+      input_db_show_tables(db);
       break;
     case SELECT_TABLE:
       input_db_select_table(db);
@@ -109,6 +110,9 @@ void mode_table_menu(Table *table, int choice){
 
 }
 
+void input_db_show_tables(Database *db){
+  print_tables(db);
+}
 void input_db_select_table(Database *db){
   int table_choice;
   for (int i=0;i<db->table_count;i++) {

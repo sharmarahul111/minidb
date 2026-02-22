@@ -37,6 +37,18 @@ void print_table(Table *table){
   }
 
 }
+void print_tables(Database *db){
+  int i;
+  int c = db->table_count;
+  print_(12, 1);
+  printf("| %-*s |\n",9, db->name);
+  print_(12, 1);
+  for (i=0;i<db->table_count;i++) {
+      printf("| %-*s |", 9, db->table[i].name);
+  }
+  printf("\n");
+  print_(12, c);
+}
 void print_(int cell_size,int column_size){
   int i;
   for (i=0;i<column_size*cell_size+1;i++) {
