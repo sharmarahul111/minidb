@@ -16,6 +16,7 @@ void mode_table_menu(Table *table, int choice);
 // Database CRUD operations (not the database itself)
 void input_db_show_tables(Database *db);
 void input_db_select_table(Database *db);
+void input_db_create_table(Database *db);
 
 // Table CRUD operations
 void input_table_insert(Table *table);

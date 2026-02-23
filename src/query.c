@@ -6,13 +6,11 @@
 // or somekind of error throwing
 
 void db_create_table(Database *db, char name[32], Column *column, int column_size){
-  Table *table = (Table *) malloc(sizeof(Table));
-  table->column_size = column_size;
-  table->row_size = 0;
-  table->row = (Row **) malloc(sizeof(Row*));
-  table->column = column;
-  strcpy(table->name, name);
-  db->tables[db->table_count] = table;
+  db->tables[db->table_count].column_size = column_size;
+  db->tables[db->table_count].row_size = 0;
+  db->tables[db->table_count].row = (Row **) malloc(sizeof(Row*));
+  db->tables[db->table_count].column = column;
+  strcpy(db->tables[db->table_count].name, name);
   db->table_count++;
 }
 void table_insert(Table *table, Row *row){

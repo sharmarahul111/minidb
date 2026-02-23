@@ -70,6 +70,7 @@ void mode_main_menu(Database *db, int choice){
       input_db_select_table(db);
       break;
     case CREATE_TABLE:
+      input_db_create_table(db);
       break;
     case DELETE_TABLE:
       break;
@@ -113,10 +114,28 @@ void mode_table_menu(Table *table, int choice){
 void input_db_show_tables(Database *db){
   print_tables(db);
 }
+void input_db_create_table(Database *db){
+  char name[32];
+  int column_size;
+  Column *column;
+  printf("Enter table name: ");
+  scanf("%s", name);
+  printf("Enter number of columns: ");
+  scanf("%d", &column_size);
+  column = (Column *) malloc(column_size * sizeof(Column));
+  for (int i=0;i<column_size;i++) {
+    printf("Column %d:\n", i);
+    printf("Enter name: ");
+    scanf("%s", column->name);
+    printf("Enter Datatype:");
+    scanf("%d", &column->type);
+  }
+  db_create_table(db, name, column, column_size);
+}
 void input_db_select_table(Database *db){
   int table_choice;
   for (int i=0;i<db->table_count;i++) {
-    strcpy(custom_menu[i], db->tables[i]->name);
+    strcpy(custom_menu[i], db->tables[i].name);
   }
   printf("Select table:\n");
   show_menu(custom_menu, db->table_count);
