@@ -124,11 +124,11 @@ void input_db_create_table(Database *db){
   scanf("%d", &column_size);
   column = (Column *) malloc(column_size * sizeof(Column));
   for (int i=0;i<column_size;i++) {
-    printf("Column %d:\n", i);
+    printf("Column %d:\n", i+1);
     printf("Enter name: ");
-    scanf("%s", column->name);
-    printf("Enter Datatype:");
-    scanf("%d", &column->type);
+    scanf("%s", column[i].name);
+    printf("Enter Datatype: ");
+    scanf("%d", &column[i].type);
   }
   db_create_table(db, name, column, column_size);
 }
