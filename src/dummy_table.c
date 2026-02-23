@@ -3,7 +3,6 @@
 #include "schema.h"
 #include "dummy_table.h"
 Table* dummy_table(void){
-  int table_count = 1;
   int column_count = 3;
   int row_count = 4;
   int field_count = 3;
@@ -12,7 +11,7 @@ Table* dummy_table(void){
   Row *rp;
   Row **rpp;
   Field *fp;
-  tp = (Table *) malloc(table_count * sizeof(Table));
+  tp = (Table *) malloc(sizeof(Table));
   cp = (Column *) malloc(column_count * sizeof(Column));
   rpp = (Row **) malloc(row_count * sizeof(Row *));
   fp = (Field *) malloc(field_count * row_count * sizeof(Field));

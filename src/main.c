@@ -8,8 +8,8 @@
 INPUT_MODE MODE = MAIN_MENU;
 int main(void){
   int choice;
-  Table *tables[] = {dummy_table(), dummy_table()};
-  Database db = {2, 0,"My DB", tables};
+  Table *tables[32] = {dummy_table(), dummy_table()};
+  Database db = {2, 0,"My DB", {tables[0]}};
   welcome_message();
   while(1){
     choice = input_choice();

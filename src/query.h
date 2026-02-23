@@ -1,5 +1,6 @@
 #ifndef QUERY_MODULE
 #define QUERY_MODULE
+void db_create_table(Database *db, char name[32], Column *column, int column_size);
 void table_insert(Table *table, Row *row);
 void table_delete(Table *table, Row **rowp);
 void table_select(Table *table, Row **rowp[], int row_size);
