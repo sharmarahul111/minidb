@@ -45,7 +45,7 @@ void print_tables(Database *db){
   printf("\n");
   print_(12, 1);
   for (i=0;i<db->table_count;i++) {
-    printf("| %-*s |", 9, db->tables[i]->name);
+    printf("| %-*s |", 9, db->tables[i].name);
     printf("\n");
   }
   print_(12, c);

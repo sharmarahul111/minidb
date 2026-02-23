@@ -2,16 +2,14 @@
 #include <string.h>
 #include "schema.h"
 #include "dummy_table.h"
-Table* dummy_table(void){
+void dummy_table(Table *table){
   int column_count = 3;
   int row_count = 4;
   int field_count = 3;
-  Table *tp;
   Column *cp;
   Row *rp;
   Row **rpp;
   Field *fp;
-  tp = (Table *) malloc(sizeof(Table));
   cp = (Column *) malloc(column_count * sizeof(Column));
   rpp = (Row **) malloc(row_count * sizeof(Row *));
   fp = (Field *) malloc(field_count * row_count * sizeof(Field));
@@ -35,7 +33,6 @@ Table* dummy_table(void){
     *rp = (Row) {fp+i*field_count};
     rpp[i] = rp;
   }
-  tp[0] = (Table) {column_count, row_count, cp, rpp, "Table o1"};
-  return tp;
+  *table = (Table) {column_count, row_count, cp, rpp, "Table o1"};
 }
 
