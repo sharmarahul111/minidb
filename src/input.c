@@ -128,6 +128,7 @@ void input_db_create_table(Database *db){
     printf("Enter name: ");
     scanf("%s", column[i].name);
     printf("Enter Datatype: ");
+    printf("0)INT\t1)FLOAT\t2)CHAR32\t3)STRING\n>");
     scanf("%d", &column[i].type);
   }
   db_create_table(db, name, column, column_size);
@@ -198,18 +199,22 @@ void input_table_insert(Table *table){
   Row *rp = (Row *) malloc(sizeof(Row));
   Field *fp = (Field *) malloc(table->column_size*sizeof(Field));
   for (i=0;i<table->column_size;i++) {
-    printf("%s : ", table->column[i].name);
+    printf("%s ", table->column[i].name);
     switch(table->column[i].type){
       case INT:
+        printf("(INT): ");
         scanf("%d", &(fp[i].data.i32));
         break;
       case FLOAT:
+        printf("(FLOAT): ");
         scanf("%f", &(fp[i].data.f32));
         break;
       case CHAR32:
+        printf("(CHAR32): ");
         scanf("%s", fp[i].data.c32);
         break;
       case STRING:
+        printf("(STRING): ");
         fp[i].data.s = (char *) malloc(20*sizeof(char));
         scanf("%s", fp[i].data.s);
         break;
