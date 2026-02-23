@@ -24,7 +24,6 @@ typedef struct {
 } Row;
 
 typedef struct {
-  int name_size;
   char name[32];
   DataType type;
 } Column;

@@ -14,9 +14,9 @@ void dummy_table(Table *table){
   rpp = (Row **) malloc(row_count * sizeof(Row *));
   fp = (Field *) malloc(field_count * row_count * sizeof(Field));
 
-  cp[0] = (Column) {2, "ID", INT};
-  cp[1] = (Column) {5, "Float", FLOAT};
-  cp[2] = (Column) {4, "Text", CHAR32};
+  cp[0] = (Column) {"ID", INT};
+  cp[1] = (Column) {"Float", FLOAT};
+  cp[2] = (Column) {"Text", CHAR32};
 
 
   char *names[] = {"Mark", "Jake", "David", "Sully"};
