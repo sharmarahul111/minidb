@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <string.h>
 #include "schema.h"
 #include "query.h"
 

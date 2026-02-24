@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "schema.h"
 #include "output.h"
 void print_table(Table *table){
