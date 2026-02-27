@@ -1,6 +1,7 @@
 # minidb
 Very Basic in-memory Database Management System in C
 
+### Will work on sql parser next (not sure when)
 ## Features
 - menu driven (select numbers from menu to perform operations)
 - show list of tables
@@ -13,7 +14,6 @@ Very Basic in-memory Database Management System in C
 - go back to main menu
 
 ## Future Ideas (not likely)
-- SQL like query based input
 - Basic storage engine
 - Server based
 
