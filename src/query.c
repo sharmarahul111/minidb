@@ -53,6 +53,7 @@ void table_delete(Table *table, Row **rowp){
       free((*rowp)->field[i].data.s);
     }
   }
+  free((*rowp)->field);
   free(*rowp);
   *rowp = table->row[table->row_size-1];
   table->row = (Row **) realloc(table->row, (table->row_size-1) * sizeof(Row *));
