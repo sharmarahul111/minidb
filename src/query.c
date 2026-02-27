@@ -14,6 +14,28 @@ void db_create_table(Database *db, char name[32], Column *column, int column_siz
   strcpy(db->tables[db->table_count].name, name);
   db->table_count++;
 }
+void db_delete_table(Database *db, int table_index){
+  table_truncate(&db->tables[table_index]);
+  free(db->tables[table_index].column);
+  db->tables[table_index] = db->tables[db->table_count-1];
+  db->table_count--;
+  // memset(&db->tables[db->table_count], 0, sizeof(Table));
+
+}
+void table_truncate(Table *table){
+  // to delete
+  // row, row pointer, column, field pointer
+  for (int i=0;i<table->row_size;i++) {
+    for (int j=0;j<table->column_size;j++){
+      if(table->column[j].type == STRING){
+        free(table->row[i]->field[j].data.s);
+      }
+    }
+    free(table->row[i]->field);
+    free(table->row[i]);
+  }
+  free(table->row);
+}
 void table_insert(Table *table, Row *row){
   // TODO: Sanitize the input
   (table->row_size)++;
