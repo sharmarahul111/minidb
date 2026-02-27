@@ -74,6 +74,7 @@ void mode_main_menu(Database *db, int choice){
       input_db_create_table(db);
       break;
     case DELETE_TABLE:
+      input_db_delete_table(db);
       break;
     default:
       exit(0);
@@ -112,6 +113,22 @@ void mode_table_menu(Table *table, int choice){
 
 }
 
+void input_db_delete_table(Database *db){
+  int table_choice;
+  for (int i=0;i<db->table_count;i++) {
+    strcpy(custom_menu[i], db->tables[i].name);
+  }
+  printf("Select table:\n");
+  show_menu(custom_menu, db->table_count);
+  table_choice = input_choice();
+
+  // <= table_count cuz enum index starts with 1 here
+  if(table_choice >= 0 && table_choice <= db->table_count){
+    db_delete_table(db, table_choice);
+  } else {
+    printf("Error: Invalid table selected\n");
+  }
+}
 void input_db_show_tables(Database *db){
   print_tables(db);
 }
