@@ -118,6 +118,7 @@ void input_db_show_tables(Database *db){
 void input_db_create_table(Database *db){
   char name[32];
   int column_size;
+  int choice_type;
   Column *column;
   printf("Enter table name: ");
   scanf("%s", name);
@@ -129,8 +130,26 @@ void input_db_create_table(Database *db){
     printf("Enter name: ");
     scanf("%s", column[i].name);
     printf("Enter Datatype: ");
-    printf("0)INT\t1)FLOAT\t2)CHAR32\t3)STRING\n>");
-    scanf("%d", &column[i].type);
+    printf("1)INT\t2)FLOAT\t3)CHAR32\t4)STRING\n>");
+    scanf("%d", &choice_type);
+
+    switch(choice_type){
+      case 1:
+        column[i].type = INT;
+        break;
+      case 2:
+        column[i].type = FLOAT;
+        break;
+      case 3:
+        column[i].type = CHAR32;
+        break;
+      case 4:
+        column[i].type = STRING;
+        break;
+      default:
+        printf("UNKNOWN TYPE\n");
+    }
+
   }
   db_create_table(db, name, column, column_size);
 }
