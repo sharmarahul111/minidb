@@ -12,7 +12,6 @@ void dummy_table(Table *table){
   Field *fp;
   cp = (Column *) malloc(column_count * sizeof(Column));
   rpp = (Row **) malloc(row_count * sizeof(Row *));
-  fp = (Field *) malloc(field_count * row_count * sizeof(Field));
 
   cp[0] = (Column) {"ID", INT};
   cp[1] = (Column) {"Float", FLOAT};
@@ -23,14 +22,15 @@ void dummy_table(Table *table){
   float points[] = {34.65, 240.63, 473.34, 412.64};
   int i;
   for (i=0;i<row_count;i++) {
-    fp[i*field_count+0] = (Field) {1, INT, (Data) {.i32 = i+1}};
-    fp[i*field_count+1] = (Field) {1, FLOAT, (Data) {.f32 = points[i]}};
-    fp[i*field_count+2] = (Field) {32, CHAR32, (Data) {.s = NULL}};
-    fp[i*field_count+2].type = CHAR32;
-    strcpy(fp[i*field_count+2].data.c32, names[i]);
+    fp = (Field *) malloc(field_count * sizeof(Field));
+    fp[0] = (Field) {1, INT, (Data) {.i32 = i+1}};
+    fp[1] = (Field) {1, FLOAT, (Data) {.f32 = points[i]}};
+    fp[2] = (Field) {32, CHAR32, (Data) {.s = NULL}};
+    fp[2].type = CHAR32;
+    strcpy(fp[2].data.c32, names[i]);
 
     rp = (Row *) malloc(sizeof(Row));
-    *rp = (Row) {fp+i*field_count};
+    rp->field = fp;
     rpp[i] = rp;
   }
   *table = (Table) {column_count, row_count, cp, rpp, "Table o1"};
