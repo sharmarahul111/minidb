@@ -1,5 +1,5 @@
 # minidb
-Minimal in-memory Database Management System built from scratch in C
+Simple in-memory table implementation in C exploring data structures and CLI design
 
 ## Features
 - menu driven (select numbers from menu to perform operations)
